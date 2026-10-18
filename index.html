@@ -1,572 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interactive Quiz App</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Quiz App</title>
+  <!-- <link rel="stylesheet" href="quiz app.css" /> -->
 </head>
-
 <body>
-
-<div class="container">
-
-    <!-- START SCREEN -->
+  <div class="container">
     <div class="start-screen">
+      <h1 class="heading">QUIZ APP</h1>
+      <div class="settings">
+        <label for="num-questions">Number of Questions</label>
+        <select id="num-questions" name="num-questions">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
 
-        <h1 class="heading">QUIZ APP</h1>
+        <label for="category">Select Category</label>
+        <select id="category" name="category">
+          <option value="">Any Category</option>
+          <option value="9">General Knowledge</option>
+          <option value="18">Science: Computers</option>
+          <option value="21">Sports</option>
+          <option value="23">History</option>
+        </select>
 
-        <div class="settings">
+        <label for="difficulty">Select Difficulty</label>
+        <select id="difficulty" name="difficulty">
+          <option value="">Any Difficulty</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
 
-            <label for="num-questions">
-                Number of Questions
-            </label>
-
-            <select id="num-questions" name="num-questions">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-            </select>
-
-            <label for="category">
-                Select Category
-            </label>
-
-            <select id="category" name="category">
-                <option value="">Any Category</option>
-                <option value="9">General Knowledge</option>
-                <option value="18">Science: Computers</option>
-                <option value="21">Sports</option>
-                <option value="23">History</option>
-            </select>
-
-            <label for="difficulty">
-                Select Difficulty
-            </label>
-
-            <select id="difficulty" name="difficulty">
-                <option value="">Any Difficulty</option>
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
-
-            <label for="time">
-                Select Time
-            </label>
-
-            <select id="time" name="time">
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="40">40</option>
-                <option value="50">50</option>
-                <option value="60">60</option>
-            </select>
-
-        </div>
-
-        <button class="btn start">
-            Start Quiz
-        </button>
-
+        <label for="time">Select Time</label>
+        <select id="time" name="time">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="50">50</option>
+          <option value="60">60</option>
+        </select>
+      </div>
+      <button class="btn start">Start Quiz</button>
     </div>
 
-
-    <!-- QUIZ SCREEN -->
     <div class="quiz hide">
-
-        <div class="timer">
-            <div class="progress">
-                <div class="progress-bar"></div>
-                <span class="progress-text">50</span>
-            </div>
+      <div class="timer">
+        <div class="progress">
+          <div class="progress-bar"></div>
+          <span class="progress-text">50</span>
         </div>
-
-        <div class="question-wrapper">
-
-            <div class="number">
-                Question
-                <span class="current">1</span>
-                <span class="total">/10</span>
-            </div>
-
-            <div class="question">
-                This is a Question
-            </div>
-
+      </div>
+      <div class="question-wrapper">
+        <div class="number">
+          Question <span class="current">1</span>
+          <span class="total">/10</span>
         </div>
-
-        <div class="answer-wrapper">
-
-            <div class="answer selected">
-                <span class="text">Answer</span>
-
-                <span class="checkbox">
-                    <span class="icon">✔</span>
-                </span>
-            </div>
-
-            <div class="answer correct">
-                <span class="text">Answer</span>
-
-                <span class="checkbox">
-                    <span class="icon">✔</span>
-                </span>
-            </div>
-
-            <div class="answer wrong">
-                <span class="text">Answer</span>
-
-                <span class="checkbox">
-                    <span class="icon">✔</span>
-                </span>
-            </div>
-
+        <div class="question">This is a Question</div>
+      </div>
+      <div class="answer-wrapper">
+        <div class="answer selected">
+          <span class="text">Answer</span>
+          <span class="checkbox">
+            <span class="icon">✔</span>
+          </span>
         </div>
-
-        <button class="btn submit" disabled>
-            Submit
-        </button>
-
-        <button class="btn next">
-            Next
-        </button>
-
+        <div class="answer correct">
+          <span class="text">Answer</span>
+          <span class="checkbox">
+            <span class="icon">✔</span>
+          </span>
+        </div>
+        <div class="answer wrong">
+          <span class="text">Answer</span>
+          <span class="checkbox">
+            <span class="icon">✔</span>
+          </span>
+        </div>
+      </div>
+      <button class="btn submit" disabled>Submit</button>
+      <button class="btn next">Next</button>
     </div>
 
-
-    <!-- END SCREEN -->
     <div class="end-screen hide">
-
-        <h1 class="heading">
-            QUIZ APP
-        </h1>
-
-        <div class="score">
-
-            <div class="score-text">
-                Your Score:
-            </div>
-
-            <div>
-                <span class="final-score">0</span>
-                <span class="total-score">/10</span>
-            </div>
-
+      <h1 class="heading">QUIZ APP</h1>
+      <div class="score">
+        <div class="score-text">Your Score:</div>
+        <div>
+          <span class="final-score">0</span>
+          <span class="total-score">/10</span>
         </div>
-
-        <button class="btn restart">
-            Restart Quiz
-        </button>
-
+      </div>
+      <button class="btn restart">Restart Quiz</button>
     </div>
-
-</div>
-
-
-<script>
-
-const progressBar =
-    document.querySelector(".progress-bar");
-
-const progressText =
-    document.querySelector(".progress-text");
+  </div>
+  <!-- <script src="quiz app.js"></script> -->
+   <script>
+    const progressBar = document.querySelector(".progress-bar"),
+    progressText = document.querySelector(".progress-text");
 
 const progress = (value) => {
-
-    const percentage =
-        (value / time) * 100;
-
-    progressBar.style.width =
-        `${percentage}%`;
-
-    progressText.innerHTML =
-        `${value}`;
+    const percentage = (value / time) * 100;
+    progressBar.style.width = `${percentage}%`;
+    progressText.innerHTML = `${value}`;
 };
 
+let questions = [], 
+    time = 60,
+    score = 0,
+    currentQuestion,
+    timer;
 
-let questions = [];
-
-let time = 60;
-
-let score = 0;
-
-let currentQuestion;
-
-let timer;
-
-
-const startBtn =
-    document.querySelector(".start");
-
-const numQuestions =
-    document.querySelector("#num-questions");
-
-const category =
-    document.querySelector("#category");
-
-const difficulty =
-    document.querySelector("#difficulty");
-
-const timePerQuestion =
-    document.querySelector("#time");
-
-const quiz =
-    document.querySelector(".quiz");
-
-const startscreen =
-    document.querySelector(".start-screen");
-
+const startBtn = document.querySelector(".start"),
+    numQuestions = document.querySelector("#num-questions"),
+    category = document.querySelector("#category"),
+    difficulty = document.querySelector("#difficulty"),
+    timePerQuestion = document.querySelector("#time"),
+    quiz = document.querySelector(".quiz"),
+    startscreen = document.querySelector(".start-screen");
 
 const startQuiz = () => {
+    const num = numQuestions.value;
+    const cat = category.value;
+    const diff = difficulty.value;
 
-    const num =
-        numQuestions.value;
-
-    const cat =
-        category.value;
-
-    const diff =
-        difficulty.value;
-
-    const url =
-        `https://opentdb.com/api.php?amount=${num}&category=${cat}&difficulty=${diff}&type=multiple`;
+    const url = `https://opentdb.com/api.php?amount=${num}&category=${cat}&difficulty=${diff}&type=multiple`;
 
     fetch(url)
-
         .then((res) => res.json())
-
         .then((data) => {
-
-            questions =
-                data.results;
-
+            questions = data.results;
             startscreen.classList.add("hide");
-
             quiz.classList.remove("hide");
-
             currentQuestion = 1;
-
             showQuestion(questions[0]);
-
         });
 };
 
+startBtn.addEventListener("click", startQuiz);
 
-startBtn.addEventListener(
-    "click",
-    startQuiz
-);
-
-
-const submitBtn =
-    document.querySelector(".submit");
-
-const nextBtn =
-    document.querySelector(".next");
-
+const submitBtn = document.querySelector(".submit"),
+    nextBtn = document.querySelector(".next");
 
 const showQuestion = (question) => {
+    const questionText = document.querySelector(".question"),
+        answersWrapper = document.querySelector(".answer-wrapper"),
+        questionNumber = document.querySelector(".number");
 
-    const questionText =
-        document.querySelector(".question");
+    questionText.innerHTML = question.question;
 
-    const answersWrapper =
-        document.querySelector(".answer-wrapper");
-
-    const questionNumber =
-        document.querySelector(".number");
-
-
-    questionText.innerHTML =
-        question.question;
-
-
-    const answers = [
-        ...question.incorrect_answers,
-        question.correct_answer.toString()
-    ];
-
-
-    answers.sort(
-        () => Math.random() - 0.5
-    );
-
-
+    const answers = [...question.incorrect_answers, question.correct_answer.toString()];
+    answers.sort(() => Math.random() - 0.5);
     answersWrapper.innerHTML = "";
 
-
     answers.forEach((answer) => {
-
         answersWrapper.innerHTML += `
-
             <div class="answer">
-
-                <span class="text">
-                    ${answer}
-                </span>
-
+                <span class="text">${answer}</span>
                 <span class="checkbox">
-
-                    <span class="icon">
-                        ✔
-                    </span>
-
+                    <span class="icon">✔</span>
                 </span>
-
             </div>
-
         `;
-
     });
-
 
     questionNumber.innerHTML = `
-
-        Question
-
-        <span class="current">
-            ${questions.indexOf(question) + 1}
-        </span>
-
-        <span class="total">
-            /${questions.length}
-        </span>
-
+        Question <span class="current">${questions.indexOf(question) + 1}</span>
+        <span class="total">/${questions.length}</span>
     `;
 
-
-    const answerDivs =
-        document.querySelectorAll(".answer");
-
-
+    const answerDivs = document.querySelectorAll(".answer");
     answerDivs.forEach((answer) => {
-
-        answer.addEventListener(
-            "click",
-            () => {
-
-                if(
-                    !answer.classList.contains("checked")
-                ){
-
-                    answerDivs.forEach((a) =>
-                        a.classList.remove("selected")
-                    );
-
-                    answer.classList.add("selected");
-
-                    submitBtn.disabled = false;
-                }
-
+        answer.addEventListener("click", () => {
+            if (!answer.classList.contains("checked")) {
+                answerDivs.forEach((a) => a.classList.remove("selected"));
+                answer.classList.add("selected");
+                submitBtn.disabled = false;
             }
-        );
-
+        });
     });
 
-
-    time =
-        parseInt(timePerQuestion.value);
-
+    time = parseInt(timePerQuestion.value);
     startTimer(time);
 };
 
-
 const startTimer = (t) => {
-
     let currentTime = t;
-
     timer = setInterval(() => {
-
-        if(currentTime > 0){
-
+        if (currentTime > 0) {
             progress(currentTime);
-
             currentTime--;
-
-        }
-        else{
-
+        } else {
             clearInterval(timer);
-
             checkAnswer();
-
         }
-
-    },1000);
-
+    }, 1000);
 };
 
-
-submitBtn.addEventListener(
-    "click",
-    () => {
-        checkAnswer();
-    }
-);
-
+submitBtn.addEventListener("click", () => {
+    checkAnswer();
+});
 
 const checkAnswer = () => {
-
     clearInterval(timer);
 
+    const selectedAnswer = document.querySelector(".answer.selected");
+    const correct = questions[currentQuestion - 1].correct_answer;
 
-    const selectedAnswer =
-        document.querySelector(".answer.selected");
-
-    const correct =
-        questions[currentQuestion - 1].correct_answer;
-
-
-    if(selectedAnswer){
-
-        const answerText =
-            selectedAnswer.querySelector(".text").innerHTML;
-
-
-        if(answerText === correct){
-
+    if (selectedAnswer) {
+        const answerText = selectedAnswer.querySelector(".text").innerHTML;
+        if (answerText === correct) {
             score++;
-
             selectedAnswer.classList.add("correct");
-
-        }
-        else{
+        } else {
 
             selectedAnswer.classList.add("wrong");
-
-            document
-                .querySelectorAll(".answer")
-                .forEach((answer) => {
-
-                    if(
-                        answer.querySelector(".text").innerHTML ===
-                        questions[currentQuestion - 1].correct_answer
-                    ){
-
-                        answer.classList.add("correct");
-
-                    }
-
-                });
-
-        }
-
-    }
-    else{
-
-        document
+            constAnswer = document
             .querySelectorAll(".answer")
             .forEach((answer) => {
-
-                if(
-                    answer.querySelector(".text").innerHTML === correct
-                ){
-
-                    answer.classList.add("correct");
-
+                if (
+                answer.querySelector(".text").innerHTML === 
+            questions[currentQuestion - 1 ].correct_answer
+        ) {
+                answer.classList.add("correct");
                 }
-
             });
-
+        }
+    } else {
+        document.querySelectorAll(".answer").forEach((answer) => {
+            if (answer.querySelector(".text").innerHTML === correct) {
+                answer.classList.add("correct");
+            }
+        });
     }
 
+    document.querySelectorAll(".answer").forEach((answer) => {
+        answer.classList.add("checked");
+    });
 
-    document
-        .querySelectorAll(".answer")
-        .forEach((answer) => {
-
-            answer.classList.add("checked");
-
-        });
-
-
-    submitBtn.style.display =
-        "none";
-
-    nextBtn.style.display =
-        "block";
+    submitBtn.style.display = "none";
+    nextBtn.style.display = "block";
 };
 
-
-nextBtn.addEventListener(
-    "click",
-    () => {
-        nextQuestion();
-    }
-);
-
+nextBtn.addEventListener("click", () => {
+    nextQuestion();
+});
 
 const nextQuestion = () => {
-
-    if(currentQuestion < questions.length){
-
+    if (currentQuestion < questions.length) {
         currentQuestion++;
-
-        showQuestion(
-            questions[currentQuestion - 1]
-        );
-
-        submitBtn.style.display =
-            "block";
-
-        nextBtn.style.display =
-            "none";
-
-        submitBtn.disabled =
-            true;
-
-    }
-    else{
-
+        showQuestion(questions[currentQuestion - 1]);
+        submitBtn.style.display = "block";
+        nextBtn.style.display = "none";
+        submitBtn.disabled = true;
+    } else {
         showScore();
-
     }
-
 };
 
-
-const endScreen =
-    document.querySelector(".end-screen");
-
-const finalScore =
-    document.querySelector(".final-score");
-
-const totalScore =
-    document.querySelector(".total-score");
-
+const endScreen = document.querySelector(".end-screen"),
+    finalScore = document.querySelector(".final-score"),
+    totalScore = document.querySelector(".total-score");
 
 const showScore = () => {
-
     endScreen.classList.remove("hide");
-
     quiz.classList.add("hide");
-
-    finalScore.innerHTML =
-        score;
-
-    totalScore.innerHTML =
-        `/${questions.length}`;
-
+    finalScore.innerHTML = score;
+    totalScore.innerHTML = `/${questions.length}`;
 };
 
-
-const restartBtn =
-    document.querySelector(".restart");
-
-
-restartBtn.addEventListener(
-    "click",
-    () => {
-        window.location.reload();
-    }
-);
-
-</script>
-
+const restartBtn = document.querySelector(".restart");
+restartBtn.addEventListener("click", () => {
+    window.location.reload();
+});
+   </script>
 </body>
 </html>
-```
