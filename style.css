@@ -229,20 +229,38 @@ select{
     margin-bottom:12px;
 }
 
-/* MOBILE */
-@media(max-width:480px){
-    body{
-        padding:0;
+/* Mobile screen only */
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 15px;
     }
 
-    .container{
-        max-width:100%;
-        min-height:100vh;
-        border-radius:0;
-        padding:22px 18px;
+    .heading {
+        font-size: 40px;
+        margin-bottom: 25px;
     }
 
-    .heading{
-        font-size:35px;
+    .question-wrapper .question {
+        font-size: 22px;
+    }
+
+    .answer-wrapper .answer {
+        height: auto;
+        min-height: 55px;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .btn {
+        height: 55px;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    select {
+        height: 50px;
+        font-size: 16px;
     }
 }
